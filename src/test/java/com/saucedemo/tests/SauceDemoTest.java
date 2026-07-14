@@ -146,9 +146,6 @@ public class SauceDemoTest {
         // Parse password — last line is "secret_sauce"
         String password = passwordText.split("\n")[1].trim();
 
-        System.out.println("Using Username: " + firstUsername);
-        System.out.println("Using Password: " + password);
-
         // Step 3 — Login with credentials read from page
         driver.findElement(By.id("user-name")).sendKeys(firstUsername);
         driver.findElement(By.id("password")).sendKeys(password);
