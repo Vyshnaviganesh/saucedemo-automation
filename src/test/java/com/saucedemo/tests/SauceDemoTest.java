@@ -129,33 +129,59 @@ public class SauceDemoTest {
     public void testFullCheckoutFlow() {
         // Step 1 — Login
         driver.get("https://www.saucedemo.com");
-        driver.findElement(By.id("user-name")).sendKeys("standard_user");
-        driver.findElement(By.id("password")).sendKeys("secret_sauce");
+
+        //Step 2 — Read credentials FROM the page itself
+        // Get all usernames listed on the page
+        String credentialsText = wait.until(ExpectedConditions.visibilityOfElementLocated(
+                By.cssSelector("[data-test='login-credentials']"))).getText();
+
+        // Get password from page
+        String passwordText = wait.until(ExpectedConditions.visibilityOfElementLocated(
+                By.cssSelector("[data-test='login-password']"))).getText();
+
+        // Parse first username from the list
+        // credentialsText looks like: "standard_user\nlocked_out_user\nproblem_user..."
+        String firstUsername = credentialsText.split("\n")[0].trim();
+
+        // Parse password — last line is "secret_sauce"
+        String password = passwordText.split("\n")[passwordText.split("\n").length - 1].trim();
+
+        System.out.println("Using Username: " + firstUsername);
+        System.out.println("Using Password: " + password);
+
+        // Step 3 — Login with credentials read from page
+        driver.findElement(By.id("user-name")).sendKeys(firstUsername);
+        driver.findElement(By.id("password")).sendKeys(password);
         driver.findElement(By.id("login-button")).click();
 
-        // Step 2 — Add item to cart
+        //step 2 - By hardcoding username and password
+        //driver.findElement(By.id("user-name")).sendKeys("standard_user");
+        //driver.findElement(By.id("password")).sendKeys("secret_sauce");
+        //driver.findElement(By.id("login-button")).click();
+
+        // Step 3 — Add item to cart
         wait.until(ExpectedConditions.elementToBeClickable(
                 By.cssSelector(".inventory_item:first-child button"))).click();
 
-        // Step 3 — Go to cart
+        // Step 4 — Go to cart
         driver.findElement(By.cssSelector(".shopping_cart_link")).click();
 
-        // Step 4 — Click checkout
+        // Step 5 — Click checkout
         wait.until(ExpectedConditions.elementToBeClickable(
                 By.id("checkout"))).click();
 
-        // Step 5 — Fill shipping info
+        // Step 6 — Fill shipping info
         wait.until(ExpectedConditions.visibilityOfElementLocated(
                 By.id("first-name"))).sendKeys("John");
         driver.findElement(By.id("last-name")).sendKeys("Doe");
         driver.findElement(By.id("postal-code")).sendKeys("12345");
         driver.findElement(By.id("continue")).click();
 
-        // Step 6 — Finish order
+        // Step 7 — Finish order
         wait.until(ExpectedConditions.elementToBeClickable(
                 By.id("finish"))).click();
 
-        // Step 7 — Verify confirmation
+        // Step 8 — Verify confirmation
         String confirmation = wait.until(ExpectedConditions.visibilityOfElementLocated(
                 By.cssSelector(".complete-header"))).getText();
         Assert.assertEquals(confirmation, "Thank you for your order!",
