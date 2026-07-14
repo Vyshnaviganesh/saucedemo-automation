@@ -1,4 +1,3 @@
-Here's the complete README.md — just copy everything between the lines:
 
 ---
 
