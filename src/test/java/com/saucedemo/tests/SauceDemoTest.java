@@ -144,7 +144,7 @@ public class SauceDemoTest {
         String firstUsername = credentialsText.split("\n")[1].trim();
 
         // Parse password — last line is "secret_sauce"
-        String password = passwordText.split("\n")[passwordText.split("\n").length - 1].trim();
+        String password = passwordText.split("\n")[1].trim();
 
         System.out.println("Using Username: " + firstUsername);
         System.out.println("Using Password: " + password);
