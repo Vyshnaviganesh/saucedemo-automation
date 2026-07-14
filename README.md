@@ -159,17 +159,6 @@ A demo e-commerce site designed for automation practice.
 
 ---
 
-## 📋 Future Enhancements
-
-- [ ] Add ExtentReports for HTML test reports
-- [ ] Add data-driven testing with Excel/CSV
-- [ ] Add screenshot on test failure
-- [ ] Integrate with GitHub Actions CI/CD
-- [ ] Add Docker + Selenium Grid support
-- [ ] Cross-browser testing (Firefox, Edge)
-
----
-
 ## 👤 Author
 
 Vyshnavi H G
