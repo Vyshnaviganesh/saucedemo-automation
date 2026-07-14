@@ -1,4 +1,3 @@
-Here's the complete README.md — just copy everything between the lines:
 
 ---
 
@@ -156,17 +155,6 @@ A demo e-commerce site designed for automation practice.
 | Standard User | standard_user | secret_sauce |
 | Locked Out User | locked_out_user | secret_sauce |
 | Problem User | problem_user | secret_sauce |
-
----
-
-## 📋 Future Enhancements
-
-- [ ] Add ExtentReports for HTML test reports
-- [ ] Add data-driven testing with Excel/CSV
-- [ ] Add screenshot on test failure
-- [ ] Integrate with GitHub Actions CI/CD
-- [ ] Add Docker + Selenium Grid support
-- [ ] Cross-browser testing (Firefox, Edge)
 
 ---
 
